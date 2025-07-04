@@ -1,0 +1,7 @@
+license:
+  dev-model: false
+  enable: true
+  public-key-path: "public.key"
+  license-path: "license.lic"
+  enableAutoRefresh: true
+  enableInterceptor: true
