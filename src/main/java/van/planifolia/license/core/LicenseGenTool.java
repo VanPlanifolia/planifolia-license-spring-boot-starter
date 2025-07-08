@@ -46,9 +46,6 @@ public class LicenseGenTool {
         FileUtil.writeStringToFile(Strings.isBlank(publicKeyPath) ? "public.key" : publicKeyPath + "/public.key", RsaUtil.encodeKey(keyPair.getPublic()));
     }
 
-    public static void main(String[] args) throws Exception {
-        genLicense("测试", DateTimeUtil.delayedSomeDay(new Date(), 1), "测试", "", "");
-    }
 
 
 }

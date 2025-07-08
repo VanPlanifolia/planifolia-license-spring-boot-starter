@@ -66,7 +66,11 @@ public class LicenseManager {
             if (RsaUtil.verify(rawContent, signature, publicKey)) {
                 this.expireDate = (String) map.get("expireTime");
                 this.valid = true;
-                log.info(Strings.toColor("授权信息加载成功！授权到期时间:{},当前状态:{}", ConsoleColors.GREEN), expireDate, valid);
+                if (props.isDevMode()) {
+                    log.error(Strings.toColor("授权信息加载成功！授权到期时间:{}，当前模式为DEV，不拦截任何请求。", ConsoleColors.YELLOW), expireDate);
+                } else {
+                    log.info(Strings.toColor("授权信息加载成功！授权到期时间:{},当前状态:{}", ConsoleColors.GREEN), expireDate, isValid() ? "正常" : "授权到期");
+                }
             } else {
                 this.valid = false;
                 log.error(Strings.toColor("授权信息加载失败！", ConsoleColors.RED));
