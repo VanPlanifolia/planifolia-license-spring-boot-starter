@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>van.planifolia.license</groupId>
     <artifactId>planifolia-license-spring-boot-starter</artifactId>
-    <version>a-0.0.4</version>
+    <version>a-0.0.5</version>
     <name>planifolia-license-spring-boot-starter</name>
     <description>planifolia-license-spring-boot-starter</description>
     <properties>
