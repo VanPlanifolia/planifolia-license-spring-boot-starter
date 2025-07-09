@@ -46,6 +46,18 @@ public class LicenseGenTool {
         FileUtil.writeStringToFile(Strings.isBlank(publicKeyPath) ? "public.key" : publicKeyPath + "/public.key", RsaUtil.encodeKey(keyPair.getPublic()));
     }
 
+    /**
+     * 生成一组授权证书文件,调用该方法会自动生成一套证书与授权文件信息
+     *
+     * @param applicationName 应用名称
+     * @param authorizeDay    授权天数
+     * @param customerName    客户信息
+     * @param licPath         输出的授权文件路径
+     * @param publicKeyPath   输出的公钥文件路径
+     */
+    public static void genLicense(String applicationName, Integer authorizeDay, String customerName, String licPath, String publicKeyPath) throws Exception {
+        genLicense(applicationName, DateTimeUtil.delayedSomeDay(new Date(), authorizeDay), customerName, licPath, publicKeyPath);
+    }
 
 
 }
