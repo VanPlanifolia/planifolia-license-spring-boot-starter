@@ -25,7 +25,7 @@ public class RsaUtil {
     }
 
     /**
-     * 解析公私钥key，本质上就是base64编码
+     * 对key进行base64编码
      *
      * @param key 被解析的
      * @return 解析结果
@@ -50,17 +50,17 @@ public class RsaUtil {
         return signature.verify(signBytes);
     }
 
+    /**
+     * 公钥解析
+     * @param base64Key 被解析的公钥
+     * @return 解析出来的公钥KEY
+     */
     public static PublicKey decodePublicKey(String base64Key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(base64Key);
         X509EncodedKeySpec spec = new X509EncodedKeySpec(bytes);
         return KeyFactory.getInstance("RSA").generatePublic(spec);
     }
 
-    public static PrivateKey decodePrivateKey(String base64Key) throws Exception {
-        byte[] bytes = Base64.getDecoder().decode(base64Key);
-        PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(bytes);
-        return KeyFactory.getInstance("RSA").generatePrivate(spec);
-    }
 
     /**
      * 生成一对公私钥
